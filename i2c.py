@@ -32,7 +32,11 @@ def read():
 try:
   configure()
   while 1:
-    read()
+    val = read()
+    if(val < 20): print("too dark")
+    elif(val < 70): print("medium")
+    elif(val < 500): print("bright")
+    else: print("too bright")
     time.sleep(0.75)
 
 except KeyboardInterrupt:
