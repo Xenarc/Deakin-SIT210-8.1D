@@ -8,25 +8,25 @@ DEVICE_ADDRESS = 0x23
 CONTINUOUS_H_RES = 0x10
 
 def configure():
-  print("Configure")
+  #print("Configure")
   bus.write_byte(DEVICE_ADDRESS, CONTINUOUS_H_RES) # Set mode
   time.sleep(.01) # sleep 10ms
-  print("Done configure")
+  #print("Done configure")
 
 def read():
-  print("Read")
+  #print("Read")
   level = -1.0
 
   # Get two bytes
   measurement = bus.read_i2c_block_data(DEVICE_ADDRESS, CONTINUOUS_H_RES, 2)
-  print(f"Measurement: {measurement}")
+  #print(f"Measurement: {measurement}")
   level = measurement[0] << 8 | measurement[1]
 
   if (level != -1.0):
     # Convert to lux
     level /= 2.4
 
-  print(f"level: {level}")
+  #print(f"level: {level}")
   return level
 
 try:
